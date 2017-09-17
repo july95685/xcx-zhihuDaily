@@ -1,0 +1,18 @@
+<view>
+	<view class="header-cover" wx:if="{{news.image}}">
+		<image mode="aspectFill" style="width:100%;" src="{{news.image}}"></image>
+		<view class="desc">
+	      <text>{{news.title}}</text>
+	    </view>
+	</view>
+	<view >
+		<block wx:for = "{{news.body}}">
+			 <text>{{item.title}}</text>
+			 <view wx:for="{{item.content}}"  wx:for-item="it">
+				<view>
+					{{it.value}}
+				</view>
+			</view>
+		</block>
+	</view>
+</view>
