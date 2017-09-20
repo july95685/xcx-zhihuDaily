@@ -2,43 +2,48 @@
 	bindtap="ballClickEvent" bindtouchmove="ballMoveEvent">
 </view>
 
-<scroll-view scroll-y="true" style="height:100%;width:100%;display:block;background:#999;" bindscrolltolower="loadingMoreEvent">
-	<view class="header">
-		<view class="userinfo">
-			<image src="{{avatarUrl}}" class="avatar"></image>
-			<text>{{nickName}}</text>
+<view wx:if="{{showMenu}}" style="height:100%;width:100%;background-color:rgba(0,0,0,0.5);z-index:2;position:fixed;display:flex;flex-direction:row;justify-content:space-between;
+">
+	<scroll-view scroll-y="true" style="height:100%;width:70%;display:block;background:#999;" bindscrolltolower="loadingMoreEvent">
+		<view class="header">
+			<view class="userinfo">
+				<image src="{{avatarUrl}}" class="avatar"></image>
+				<text>{{nickName}}</text>
+			</view>
+			<view class="toolbar">
+				<view class="item" bindtap="toCollectPage">
+		          <image src="../../images/star_white.png"></image>
+		          <text>我的收藏</text>
+		        </view>
+		        <view class="item" bindtap="toSettingPage">
+		          <image src="../../images/setting.png"></image>
+		          <text>设置</text>
+		        </view>
+			</view>
 		</view>
-		<view class="toolbar">
-			<view class="item" bindtap="toCollectPage">
-	          <image src="../../images/star_white.png"></image>
-	          <text>我的收藏</text>
-	        </view>
-	        <view class="item" bindtap="toSettingPage">
-	          <image src="../../images/setting.png"></image>
-	          <text>设置</text>
-	        </view>
-		</view>
-	</view>
-    <view class="menu-item home" bindtap="toHomePage">
-      <view>
-      	<image src="../../images/home.png" class="home-icon"></image>
-        <text >首页</text>
-      </view>
-    </view>
-    <view class="slide-inner">
-    	<view wx:for="{{themeData}}" wx:for-item="item">
-    		<view class="menu-item" data-id="{{item.id}}" wx:if="{{themeId==item.id}}" style="background:rgba(0,0,0,0.10)" bindtap="toThemePage">
-    			<text>{{item.name}}</text>
-    			<image src="../../images/plus.png"></image>
-    		</view>
-    		<view class="menu-item" data-id="{{item.id}}" wx:else bindtap="toThemePage">
-    			<text>{{item.name}}</text>
-          		<image src="../../images/plus.png"></image>
-    		</view>
-    	</view>
-    </view>
+	    <view class="menu-item home" bindtap="toHomePage">
+	      <view>
+	      	<image src="../../images/home.png" class="home-icon"></image>
+	        <text >首页</text>
+	      </view>
+	    </view>
+	    <view class="slide-inner">
+	    	<view wx:for="{{themeData}}" wx:for-item="item">
+	    		<view class="menu-item" data-id="{{item.id}}" wx:if="{{themeId==item.id}}" style="background:rgba(0,0,0,0.10)" bindtap="toThemePage">
+	    			<text>{{item.name}}</text>
+	    			<image src="../../images/plus.png"></image>
+	    		</view>
+	    		<view class="menu-item" data-id="{{item.id}}" wx:else bindtap="toThemePage">
+	    			<text>{{item.name}}</text>
+	          		<image src="../../images/plus.png"></image>
+	    		</view>
+	    	</view>
+	    </view>
 
-</scroll-view>
+	</scroll-view>
+	<view style="height:100%;width:30%;" bindtap="hideMenu"></view>
+</view>
+
 <scroll-view>
 	<swiper class="index-swiper" indicator-dots="true" interval="5000" autoplay="true">
 		<block wx:for="{{sliderData}}" >

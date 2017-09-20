@@ -17,6 +17,7 @@ Page({
 	    loading: false,
 	    loadingMsg: '加载中...',
 	    pageShow: 'none',
+	    showMenu:false,
 
 	    maskDisplay: 'none',
 	    slideHeight: 0,
@@ -131,6 +132,9 @@ Page({
 	},
 	ballClickEvent: function () {
 	    console.log('ballClickEvent');
+	    this.setData({
+			showMenu:true
+		});
 	},
 	ballMoveEvent: function(){
 		console.log('ballMoveEvent');
@@ -154,5 +158,10 @@ Page({
 		wx.navigateTo({
 			url: '../detail/detail?id=' + id
 		})
+	},
+	hideMenu: function(){
+		this.setData({
+			showMenu:false
+		});
 	}
 })
